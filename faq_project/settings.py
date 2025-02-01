@@ -24,8 +24,14 @@ SECRET_KEY = 'django-insecure-3t++c^wad5(1a=r!y44hk=mcfnxe##^3k*6d%c!y0z1guuvpme
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+import os
+ALLOWED_HOSTS = ['myfaq.herokuapp.com']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://user:password@localhost/dbname')
+}
 
 
 # Application definition
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

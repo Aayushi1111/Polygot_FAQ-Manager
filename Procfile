@@ -1,0 +1,1 @@
+web: gunicorn FAQ_PROJECT.wsgi --log-file -
