@@ -32,6 +32,10 @@ import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(default='postgres://user:password@localhost/dbname')
 }
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://user:password@localhost/dbname')
+}
 
 
 # Application definition
